@@ -5,35 +5,38 @@
 package Controlador;
 
 import Base_de_datos.Conexion;
-import Modelo.Producto;
+import Modelo.Boleta;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.ArrayList;
-
+import java.sql.Date;
+//import java.util.Date;
 /**
  *
  * @author jere
  */
-public class Inventario {
-    
-    public boolean agregarProducto(Producto producto)
+public class Venta {
+   
+    public boolean agregarBoleta(Boleta boleta)
     {
         try {
-
+            LocalDate hoy = LocalDate.now(); //fecha de hoy /fecha en la que se creo la boleta
+            Date fechaSql = Date.valueOf(hoy); // pasa la LocalDate a Date 
+            
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexionProducto();
             
             //SQL
-            String query = "INSERT INTO Producto(nombreProducto, precioProducto, stock, tipoProducto) VALUES(?,?,?,?)";
+            String query = "INSERT INTO Boleta(neto, totalBoleta) VALUES(?,?)";
             PreparedStatement stmt = cnx.prepareStatement(query);
             
             //ahora le diremos los ?,?,?,?,?
-            stmt.setString(1, producto.getNombreProducto());
-            stmt.setInt(2, producto.getPrecioProducto());
-            stmt.setInt(3, producto.getStock());
-            stmt.setString(4, producto.getTipoProducto());
+            stmt.setInt(1, boleta.getNeto());
+            stmt.setInt(2, boleta.getTotalBoleta());
+            stmt.setDate(3, new java.sql.Date(fechaSql.getTime()));
             
             stmt.executeUpdate();
             stmt.close();
@@ -41,33 +44,35 @@ public class Inventario {
             
             return true;
         } catch (SQLException e) {
-            System.out.println("Error en SQL al agregar Producto " + e.getMessage());
+            System.out.println("Error en SQL al agregar la boleta " + e.getMessage());
             return false;
         }
         catch(Exception e){
-            System.out.println("Error en el método agregar Producto " + e.getMessage());
+            System.out.println("Error en el método agregar la boleta " + e.getMessage());
             return false;
         }
     }
     
     
-    public boolean actualizarProducto(Producto producto)
+    
+    public boolean actualizarBoleta(Boleta boleta)
     {
         try {
-
+            Date date;
+            
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexionProducto();
             
+            date = LocalDate.now();
             //SQL
-            String query = "UPDATE Producto set nombreProducto=?, precioProducto=?, stock=?, tipoProducto=? WHERE idProducto=?";
+            String query = "UPDATE Boleta set neto=?, totalBoleta=?, fecha=? WHERE idBoleta=?";
             PreparedStatement stmt = cnx.prepareStatement(query);
             
             //ahora le diremos los ?,?,?,?,?
-            stmt.setString(1, producto.getNombreProducto());
-            stmt.setInt(2, producto.getPrecioProducto());
-            stmt.setInt(3, producto.getStock());
-            stmt.setString(4, producto.getTipoProducto());
-            stmt.setInt(5, producto.getIdProducto());
+            stmt.setInt(1, boleta.getNeto());
+            stmt.setInt(2, boleta.getTotalBoleta());
+            stmt.setDate(3, sqlDate);
+            stmt.setInt(4, boleta.getIdBoleta());
             
             stmt.executeUpdate();
             stmt.close();
@@ -75,16 +80,16 @@ public class Inventario {
             
             return true;
         } catch (SQLException e) {
-            System.out.println("Error en SQL al actualizar Producto " + e.getMessage());
+            System.out.println("Error en SQL al actualizar la boleta " + e.getMessage());
             return false;
         }
         catch(Exception e){
-            System.out.println("Error en el método actualizar Producto " + e.getMessage());
+            System.out.println("Error en el método actualizar la boleta " + e.getMessage());
             return false;
         }
     }
     
-    public boolean eliminarProducto(int idProducto)
+    public boolean eliminarBoleta(int idBoleta)
     {
         try {
 
@@ -103,19 +108,19 @@ public class Inventario {
             
             return true;
         } catch (SQLException e) {
-            System.out.println("Error en SQL al actualizar Producto " + e.getMessage());
+            System.out.println("Error en SQL al actualizar la boleta " + e.getMessage());
             return false;
         }
         catch(Exception e){
-            System.out.println("Error en el método actualizar Producto " + e.getMessage());
+            System.out.println("Error en el método actualizar la boleta " + e.getMessage());
             return false;
         }
     }
     
-    public ArrayList<Producto> buscarProductos()
+    public ArrayList<Boletas> buscarBoletas()
     {
         
-        ArrayList<Producto> productos = new ArrayList<>();
+        ArrayList<Boleta> boletas = new ArrayList<>();
                 
         try {
 
@@ -145,16 +150,16 @@ public class Inventario {
             
             
         } catch (SQLException e) {
-            System.out.println("Error en SQL al Listar Productos " + e.getMessage());
+            System.out.println("Error en SQL al Listar las boletas" + e.getMessage());
             
         }
         return productos;
     }
     
-    public Producto buscarIdProducto(int idProducto)
+    public Boleta buscarIdBoleta(int idBoleta)
     {
         
-        Producto producto = new Producto();
+        Boleta boleta = new Boleta();
                 
         try {
 
@@ -184,8 +189,8 @@ public class Inventario {
             
             
         } catch (SQLException e) {
-            System.out.println("Error en SQL al Listar Productos " + e.getMessage());
+            System.out.println("Error en SQL al Listar la boleta " + e.getMessage());
         }
-        return producto;
+        return boleta;
     }
 }

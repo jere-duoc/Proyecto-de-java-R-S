@@ -12,15 +12,16 @@ import java.util.Date;
  */
 public class Boleta {
     
-    private int idBoleta, neto;
+    private int idBoleta, neto, TotalBoleta;
     private Date fecha;
 
     public Boleta() {
     }
 
-    public Boleta(int idBoleta, int neto, Date fecha) {
+    public Boleta(int idBoleta, int neto, int TotalBoleta, Date fecha) {
         this.idBoleta = idBoleta;
         this.neto = neto;
+        this.TotalBoleta = TotalBoleta;
         this.fecha = fecha;
     }
 
@@ -40,6 +41,14 @@ public class Boleta {
         this.neto = neto;
     }
 
+    public int getTotalBoleta() {
+        return TotalBoleta;
+    }
+
+    public void setTotalBoleta(int TotalBoleta) {
+        this.TotalBoleta = TotalBoleta;
+    }
+
     public Date getFecha() {
         return fecha;
     }
@@ -50,8 +59,8 @@ public class Boleta {
 
     @Override
     public String toString() {
-        return "Boleta{" + "idBoleta=" + idBoleta + ", neto=" + neto + ", fecha=" + fecha + '}';
+        return "Boleta{" + "idBoleta=" + idBoleta + ", neto=" + neto + ", TotalBoleta=" + TotalBoleta + ", fecha=" + fecha + '}';
     }
- 
 
+    
 }
