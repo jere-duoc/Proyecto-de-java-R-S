@@ -38,24 +38,5 @@ public class Conexion {
         
         return conexion;
     }
-    /*
-    public Connection obtenerConexionBoleta()
-    {
-        Connection conexion = null;
-        
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // llama a la base de datos con el usuario root y la contraseña:(... )
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/boleta", "root", "Admin1234");
-            System.out.println("Conexion a base de datos 'Boleta' exitosa");
-        } catch (Exception e) {
-            System.out.println("Fallo conexión con Servidor");
-        }
-        
-        return conexion;
-    }
-    */
-   
     
 }
