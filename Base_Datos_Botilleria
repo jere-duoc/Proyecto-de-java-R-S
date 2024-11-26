@@ -1,5 +1,6 @@
 create database botilleria;
 use botilleria;
+
 create table Producto(
 idProducto int not null auto_increment,
 nombreProducto varchar(30) not null,
@@ -18,3 +19,6 @@ fecha date not null,
 
 primary key(idBoleta)
 )
+
+-- drop table Producto;
+-- drop table Boleta;
