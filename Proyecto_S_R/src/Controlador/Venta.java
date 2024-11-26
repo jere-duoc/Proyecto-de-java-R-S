@@ -24,19 +24,18 @@ public class Venta {
     {
         try {
             LocalDate hoy = LocalDate.now(); //fecha de hoy /fecha en la que se creo la boleta
-            Date fechaSql = Date.valueOf(hoy); // pasa la LocalDate a Date 
             
             Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexionProducto();
+            Connection cnx = con.obtenerConexion();
             
             //SQL
-            String query = "INSERT INTO Boleta(neto, totalBoleta) VALUES(?,?)";
+            String query = "INSERT INTO Boleta(neto, totalBoleta, fecha) VALUES(?,?,?)";
             PreparedStatement stmt = cnx.prepareStatement(query);
             
             //ahora le diremos los ?,?,?,?,?
             stmt.setInt(1, boleta.getNeto());
             stmt.setInt(2, boleta.getTotalBoleta());
-            stmt.setDate(3, new java.sql.Date(fechaSql.getTime()));
+            stmt.setDate(3, java.sql.Date.valueOf(hoy)); //convierte la LocalDate a fecha leible por Sql workbench
             
             stmt.executeUpdate();
             stmt.close();
@@ -52,72 +51,8 @@ public class Venta {
             return false;
         }
     }
-    
-    
-    
-    public boolean actualizarBoleta(Boleta boleta)
-    {
-        try {
-            Date date;
-            
-            Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexionProducto();
-            
-            date = LocalDate.now();
-            //SQL
-            String query = "UPDATE Boleta set neto=?, totalBoleta=?, fecha=? WHERE idBoleta=?";
-            PreparedStatement stmt = cnx.prepareStatement(query);
-            
-            //ahora le diremos los ?,?,?,?,?
-            stmt.setInt(1, boleta.getNeto());
-            stmt.setInt(2, boleta.getTotalBoleta());
-            stmt.setDate(3, sqlDate);
-            stmt.setInt(4, boleta.getIdBoleta());
-            
-            stmt.executeUpdate();
-            stmt.close();
-            cnx.close();
-            
-            return true;
-        } catch (SQLException e) {
-            System.out.println("Error en SQL al actualizar la boleta " + e.getMessage());
-            return false;
-        }
-        catch(Exception e){
-            System.out.println("Error en el método actualizar la boleta " + e.getMessage());
-            return false;
-        }
-    }
-    
-    public boolean eliminarBoleta(int idBoleta)
-    {
-        try {
 
-            Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexionProducto();
-            
-            //SQL
-            String query = "DELETE FROM Producto WHERE idLibro=?";
-            PreparedStatement stmt = cnx.prepareStatement(query);
-            
-            stmt.setInt(1, idProducto);
-            
-            stmt.executeUpdate();
-            stmt.close();
-            cnx.close();
-            
-            return true;
-        } catch (SQLException e) {
-            System.out.println("Error en SQL al actualizar la boleta " + e.getMessage());
-            return false;
-        }
-        catch(Exception e){
-            System.out.println("Error en el método actualizar la boleta " + e.getMessage());
-            return false;
-        }
-    }
-    
-    public ArrayList<Boletas> buscarBoletas()
+    public ArrayList<Boleta> buscarBoletas()
     {
         
         ArrayList<Boleta> boletas = new ArrayList<>();
@@ -125,23 +60,22 @@ public class Venta {
         try {
 
             Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexionProducto();
+            Connection cnx = con.obtenerConexion();
             
             //SQL
-            String query = "SELECT * FROM Producto ORDER BY idProducto";
+            String query = "SELECT * FROM Boleta ORDER BY idBoleta";
             PreparedStatement stmt = cnx.prepareStatement(query);
             
             ResultSet rs = stmt.executeQuery();
             
             while (rs.next()) {
-                Producto producto = new Producto();
-                producto.setIdProducto(rs.getInt("idProducto"));
-                producto.setNombreProducto(rs.getString("NombreProducto"));
-                producto.setPrecioProducto(rs.getInt("PrecioProducto"));
-                producto.setStock(rs.getInt("Stock"));
-                producto.setTipoProducto(rs.getString("TipoProducto"));
+                Boleta boleta = new Boleta();
+                boleta.setIdBoleta(rs.getInt("idBoleta"));
+                boleta.setNeto(rs.getInt("NetoBoleta"));
+                boleta.setTotalBoleta(rs.getInt("TotalBoleta"));
+                boleta.setFecha(rs.getDate("FechaBoleta"));
                 
-                productos.add(producto);
+                boletas.add(boleta);
             }
             
             rs.close();
@@ -153,7 +87,7 @@ public class Venta {
             System.out.println("Error en SQL al Listar las boletas" + e.getMessage());
             
         }
-        return productos;
+        return boletas;
     }
     
     public Boleta buscarIdBoleta(int idBoleta)
@@ -164,22 +98,21 @@ public class Venta {
         try {
 
             Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexionProducto();
+            Connection cnx = con.obtenerConexion();
             
             //SQL
-            String query = "SELECT * FROM Producto WHERE idProducto";
+            String query = "SELECT * FROM Boleta WHERE idBoleta=?";
             PreparedStatement stmt = cnx.prepareStatement(query);
-            stmt.setInt(1, idProducto);
+            stmt.setInt(1, idBoleta);
             
             ResultSet rs = stmt.executeQuery();
             
             if (rs.next()) {
                 
-                producto.setIdProducto(rs.getInt("idProducto"));
-                producto.setNombreProducto(rs.getString("NombreProducto"));
-                producto.setPrecioProducto(rs.getInt("PrecioProducto"));
-                producto.setStock(rs.getInt("Stock"));
-                producto.setTipoProducto(rs.getString("TipoProducto"));
+                boleta.setIdBoleta(rs.getInt("idBoleta"));
+                boleta.setNeto(rs.getInt("NetoBoleta"));
+                boleta.setTotalBoleta(rs.getInt("TotalBoleta"));
+                boleta.setFecha(rs.getDate("FechaBoleta"));
    
             }
             

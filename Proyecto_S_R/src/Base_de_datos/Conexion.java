@@ -14,7 +14,14 @@ import java.sql.DriverManager;
  */
 public class Conexion {
     
-    public Connection obtenerConexionProducto()
+    public static void main(String[] args) {
+        Conexion con = new Conexion();
+
+        con.obtenerConexion();
+        System.out.println("");
+    }
+     
+    public Connection obtenerConexion()
     {
         Connection conexion = null;
         
@@ -22,15 +29,16 @@ public class Conexion {
             Class.forName("com.mysql.cj.jdbc.Driver");
             
             // llama a la base de datos con el usuario root y la contraseña:(... )
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/producto", "root", "Admin1234");
-            System.out.println("Conexion a base de datos 'Producto' exitosa");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/botilleria", "root", "Admin1234");
+            System.out.println("Conexion a base de datos exitosa");
         } catch (Exception e) {
-            System.out.println("Fallo conexión con Servidor");
+            System.out.println("Fallo conexión con Servidor"+ e.getMessage());
+            e.printStackTrace(); // Imprime el stack trace
         }
         
         return conexion;
     }
-    
+    /*
     public Connection obtenerConexionBoleta()
     {
         Connection conexion = null;
@@ -47,13 +55,7 @@ public class Conexion {
         
         return conexion;
     }
-    
-    public static void main(String[] args) {
-        Conexion con = new Conexion();
-        con.obtenerConexionBoleta();
-        
-        con.obtenerConexionProducto();
-        System.out.println("");
-    }
+    */
+   
     
 }

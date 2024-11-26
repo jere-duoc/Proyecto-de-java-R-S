@@ -23,7 +23,7 @@ public class Inventario {
         try {
 
             Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexionProducto();
+            Connection cnx = con.obtenerConexion();
             
             //SQL
             String query = "INSERT INTO Producto(nombreProducto, precioProducto, stock, tipoProducto) VALUES(?,?,?,?)";
@@ -56,7 +56,7 @@ public class Inventario {
         try {
 
             Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexionProducto();
+            Connection cnx = con.obtenerConexion();
             
             //SQL
             String query = "UPDATE Producto set nombreProducto=?, precioProducto=?, stock=?, tipoProducto=? WHERE idProducto=?";
@@ -89,10 +89,10 @@ public class Inventario {
         try {
 
             Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexionProducto();
+            Connection cnx = con.obtenerConexion();
             
             //SQL
-            String query = "DELETE FROM Producto WHERE idLibro=?";
+            String query = "DELETE FROM Producto WHERE idProducto=?";
             PreparedStatement stmt = cnx.prepareStatement(query);
             
             stmt.setInt(1, idProducto);
@@ -120,7 +120,7 @@ public class Inventario {
         try {
 
             Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexionProducto();
+            Connection cnx = con.obtenerConexion();
             
             //SQL
             String query = "SELECT * FROM Producto ORDER BY idProducto";
@@ -159,10 +159,10 @@ public class Inventario {
         try {
 
             Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexionProducto();
+            Connection cnx = con.obtenerConexion();
             
             //SQL
-            String query = "SELECT * FROM Producto WHERE idProducto";
+            String query = "SELECT * FROM Producto WHERE idProducto=?";
             PreparedStatement stmt = cnx.prepareStatement(query);
             stmt.setInt(1, idProducto);
             
@@ -187,5 +187,34 @@ public class Inventario {
             System.out.println("Error en SQL al Listar Productos " + e.getMessage());
         }
         return producto;
+    }
+    
+    public boolean verificarIdProducto(int idProducto) { // Para ver si existe la id del producto al realizar una compra
+        
+        Connection conexion = null;
+        PreparedStatement stmt = null;
+
+        try {
+            // Establecer conexión
+            Conexion con = new Conexion();
+            Connection cnx = con.obtenerConexion();
+
+            // Consulta SQL
+            String query = "SELECT idProducto FROM Producto WHERE idProducto = ?";
+            stmt = cnx.prepareStatement(query);
+            stmt.setInt(1, idProducto);  
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            // Verificar si se encontró el producto
+            if (rs.next()) {
+                return true;  // Si la consulta retorna resultados, la ID existe
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("Error al ejecutar la consulta: " + e.getMessage());
+        } 
+        
+        return true;
     }
 }
