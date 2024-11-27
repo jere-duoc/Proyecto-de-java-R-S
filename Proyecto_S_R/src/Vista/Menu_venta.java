@@ -179,6 +179,7 @@ public class Menu_venta extends javax.swing.JFrame {
         jMenu1.add(jmenu_ElimarProd);
 
         jmenu_salir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmenu_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Iconos S-R/exit.png"))); // NOI18N
         jmenu_salir.setText("Salir");
         jmenu_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
