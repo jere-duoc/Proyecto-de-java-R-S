@@ -46,9 +46,9 @@ public class Menu_venta extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jtext_idProducto = new javax.swing.JTextField();
         jbutt_agregarID = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButton_Boleta = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextArea_boleta = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -70,17 +70,17 @@ public class Menu_venta extends javax.swing.JFrame {
         jtabl_datos.setBackground(new java.awt.Color(246, 236, 204));
         jtabl_datos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Stock", "Nombre Del Producto", "ID", "Tipo De Producto", "Precio"
+                "ID", "Nombre Del Producto", "Cantidad", "Precio"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -132,21 +132,21 @@ public class Menu_venta extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jButton1.setBackground(new java.awt.Color(246, 236, 204));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Iconos S-R/Captura de pantalla 2024-11-26 210341-Photoroom (1).png"))); // NOI18N
-        jButton1.setText("Boleta");
-        jButton1.setToolTipText("");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Boleta.setBackground(new java.awt.Color(246, 236, 204));
+        jButton_Boleta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton_Boleta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Iconos S-R/Captura de pantalla 2024-11-26 210341-Photoroom (1).png"))); // NOI18N
+        jButton_Boleta.setText("Boleta");
+        jButton_Boleta.setToolTipText("");
+        jButton_Boleta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton_Boleta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton_BoletaActionPerformed(evt);
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        jTextArea_boleta.setColumns(20);
+        jTextArea_boleta.setRows(5);
+        jScrollPane2.setViewportView(jTextArea_boleta);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Iconos S-R/pepe.png"))); // NOI18N
 
@@ -213,7 +213,7 @@ public class Menu_venta extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton_Boleta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE))
                         .addContainerGap())))
         );
@@ -227,7 +227,7 @@ public class Menu_venta extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton_Boleta, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 6, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -245,37 +245,58 @@ public class Menu_venta extends javax.swing.JFrame {
 
     private void jbutt_agregarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutt_agregarIDActionPerformed
         
-        int idProducto, stock, precioProducto;
-        String nombreProducto, tipoProducto;
-        
+        int idProducto, precioProducto, cantidad=0, precio;
+        String nombreProducto;
+ 
         Inventario inv = new Inventario();
         DefaultTableModel modelo = (DefaultTableModel) this.jtabl_datos.getModel();
-        modelo.setRowCount(0);
+
         try {
             idProducto = Integer.parseInt(this.jtext_idProducto.getText());
-            
         } catch (NumberFormatException e) 
         {
              idProducto = 0;
         }
-
-        if (inv.verificarIdProducto(idProducto)){
-            
-            System.out.println("existe el prodcuto con la id " + idProducto  );
+  
+        if (inv.verificarIdProducto(idProducto)){  
+            System.out.println("si existe el producto con la id: " + idProducto  );
             Producto prod = inv.buscarIdProducto(idProducto);
-            idProducto = prod.getIdProducto();
-            stock = prod.getStock();
-            precioProducto = prod.getPrecioProducto();
-            nombreProducto = prod.getNombreProducto();
-            tipoProducto = prod.getTipoProducto();
+            
+            if (modelo.getRowCount()<0) {
+                
+                for (int i = 0; i < modelo.getRowCount(); i++) { 
+                    int idTabla = Integer.parseInt(modelo.getValueAt(i, 0).toString()); // Lee la ID en la columna 0        
+                
+                    if (idTabla == idProducto) {
 
-            modelo.addRow(new Object[]{idProducto, nombreProducto, precioProducto, stock, tipoProducto});
-        
-        } else{
+                        // Si el producto ya está, actualizamos cantidad y precio
+                        cantidad = Integer.parseInt(modelo.getValueAt(i, 3).toString()); // Lee la cantidad del producto x en columna la 2
+                        cantidad++; // Incrementar la cantidad
+                        precioProducto = prod.getPrecioProducto();
+                        precio = cantidad * precioProducto; // Calcular el nuevo precio total
+
+                        // Actualizar la tabla
+                        modelo.setValueAt(cantidad, i, 2); // Actualizar cantidad
+
+                        }
+                    }
+            }else{
+
+                idProducto = prod.getIdProducto();
+                precioProducto = prod.getPrecioProducto();
+                nombreProducto = prod.getNombreProducto();
+                cantidad = 1; // Primera vez que se agrega, cantidad es 1
+                precio = cantidad * precioProducto;
+
+                
+                modelo.addRow(new Object[]{idProducto, nombreProducto, cantidad, precio});
+            }
+
+        }
+        else{
             System.out.println("Error encontrando el producto");
             JOptionPane.showMessageDialog(null, "Error ingresando producto, ingrese una id valida", "IngresoId", 2);
         }
-        
     }//GEN-LAST:event_jbutt_agregarIDActionPerformed
 
     private void jmenu_IngresarProd_OPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenu_IngresarProd_OPCActionPerformed
@@ -293,31 +314,70 @@ public class Menu_venta extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jmenu_salirActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton_BoletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BoletaActionPerformed
         int neto;
         LocalDate fechaHoy = LocalDate.now();
         Date fechaSql = Date.valueOf(fechaHoy); // pasa la fecha de hoy a una fecha leible por Sql
         double netoIva;
+        jTextArea_boleta.setEditable(false); //impide que el usuario modifique los contenidos del display de la boleta
         
         Venta venta = new Venta();
-        //inv.verificarIdProducto(1);
+        DefaultTableModel modelo = (DefaultTableModel) this.jtabl_datos.getModel();
         
-        neto = 1000;
-        
-        double DoubleNeto = neto; // pasa el neto (int) a un double
-        netoIva = DoubleNeto * Impuestos.IVA; // le agrega al valor neto el iva
-        
-        int totalBoleta = (int) netoIva; //convierte el double a int con el (int)
-        
-        Boleta boleta = new Boleta(0, neto, totalBoleta, fechaSql);
-        venta.agregarBoleta(boleta);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if (modelo.getRowCount()>0) { // Ve que la tabla no este vacia antes de contar el precio
+            neto=0;
+            for (int i = 0; i < modelo.getRowCount(); i++) { 
+                int precio = Integer.parseInt(modelo.getValueAt(i, 3).toString());
+                neto += precio;
+                }
+            // Creacion de los datos de la boleta
+            double DoubleNeto = neto; // pasa el neto (int) a un double
+            netoIva = DoubleNeto * Impuestos.IVA; // le agrega al valor neto el iva
+            int totalBoleta = (int) netoIva; // convierte el double a int con el (int)
+            // Crea la boleta en el sql
+            Boleta boleta = new Boleta(0, neto, totalBoleta, fechaSql); 
+            venta.agregarBoleta(boleta);      
+      
+            // Creacion de la boleta en el display
+            StringBuilder boletaTexto = new StringBuilder(); // String builder permite crear una cadena de String para el textbox
+            boletaTexto.append("--------- Boleta ---------\n");
+            boletaTexto.append("Fecha: ").append(fechaSql).append("\n\n");
+            boletaTexto.append("Productos:\n");
+
+            for (int x = 0; x < modelo.getRowCount(); x++) { 
+                String producto = modelo.getValueAt(x, 1).toString(); // Columna del nombre del producto
+                int cantidad = Integer.parseInt(modelo.getValueAt(x, 2).toString()); // Columna de cantidad
+                int precioCompra = Integer.parseInt(modelo.getValueAt(x, 3).toString());   // Columna de precio
+                boletaTexto.append(" - ").append(producto)
+                           .append(" x").append(cantidad)
+                           .append(" $").append(precioCompra).append("\n");
+                
+            }
+
+            // Añadir los totales al texto de la boleta
+            boletaTexto.append("\nNeto: $").append(neto);
+            boletaTexto.append("\nTotal con IVA: $").append(totalBoleta);
+            boletaTexto.append("\n--------------------------");
+            
+            jTextArea_boleta.setText(boletaTexto.toString());
+            modelo.setRowCount(0);
+            
+        }else{
+           System.out.println("Error creando boleta");
+           JOptionPane.showMessageDialog(null, "Error creando boleta", "Creacion Boleta", 2); 
+           modelo.setRowCount(0);
+        }                          
+    }//GEN-LAST:event_jButton_BoletaActionPerformed
 
     private void jmenu_ElimarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenu_ElimarProdActionPerformed
         Menu_Eliminar elimnar = new Menu_Eliminar();
         elimnar.setVisible(true);
     }//GEN-LAST:event_jmenu_ElimarProdActionPerformed
 
+    private void limpiarTabla(){
+        DefaultTableModel modelo = (DefaultTableModel) jtabl_datos.getModel();
+        modelo.setRowCount(0); // Limpia todas las filas
+    }
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -343,28 +403,25 @@ public class Menu_venta extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu_venta().setVisible(true);
+                Menu_venta menu = new Menu_venta(); // Crea la instancia del formulario
+                menu.setVisible(true);              // Hace visible la ventana
+                menu.limpiarTabla();                // Llama al método limpiarTabla()
             }
         });
-        Inventario inv = new Inventario();
-        inv.verificarIdProducto(1);
-        
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton_Boleta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea_boleta;
     private javax.swing.JButton jbutt_agregarID;
     private javax.swing.JMenuItem jmenu_ActualizarProd;
     private javax.swing.JMenuItem jmenu_ElimarProd;
