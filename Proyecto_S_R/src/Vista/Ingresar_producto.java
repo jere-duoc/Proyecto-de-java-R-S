@@ -56,6 +56,11 @@ public class Ingresar_producto extends javax.swing.JFrame {
         jLabel4.setText("Nombre Producto");
 
         jcomb_tipoProd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Producto general", "Bebidas", "Vino", "Destilados" }));
+        jcomb_tipoProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcomb_tipoProdActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Tipo De Producto");
 
@@ -71,17 +76,17 @@ public class Ingresar_producto extends javax.swing.JFrame {
                         .addGap(85, 85, 85)
                         .addComponent(jtext_stockProd))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtext_nombreProd))
+                        .addComponent(jLabel3)
+                        .addGap(81, 81, 81)
+                        .addComponent(jtext_precioProd))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel6))
-                        .addGap(22, 22, 22)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcomb_tipoProd, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jtext_precioProd))))
+                            .addComponent(jtext_nombreProd)
+                            .addComponent(jcomb_tipoProd, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(34, 34, 34))
         );
         jPanel1Layout.setVerticalGroup(
@@ -99,11 +104,11 @@ public class Ingresar_producto extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jtext_precioProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jcomb_tipoProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jbutt_ingresarProd.setText("Ingresar Producto");
@@ -133,22 +138,22 @@ public class Ingresar_producto extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addComponent(jbutt_ingresarProd)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addComponent(jbutt_ingresarProd)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbutt_ingresarProd)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(12, 12, 12))
         );
 
         pack();
@@ -219,6 +224,10 @@ public class Ingresar_producto extends javax.swing.JFrame {
         Menu_venta listar = new Menu_venta();
         listar.setVisible(true);
     }//GEN-LAST:event_jmenu_crearBoletaActionPerformed
+
+    private void jcomb_tipoProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomb_tipoProdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcomb_tipoProdActionPerformed
 
     /**
      * @param args the command line arguments
