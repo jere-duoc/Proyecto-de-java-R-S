@@ -152,6 +152,7 @@ public class Menu_venta extends javax.swing.JFrame {
         jMenu1.setText("Opciones");
 
         jmenu_IngresarProd_OPC.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmenu_IngresarProd_OPC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Iconos S-R/ingresar.png"))); // NOI18N
         jmenu_IngresarProd_OPC.setText("Ingresar Producto");
         jmenu_IngresarProd_OPC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,6 +162,7 @@ public class Menu_venta extends javax.swing.JFrame {
         jMenu1.add(jmenu_IngresarProd_OPC);
 
         jmenu_ActualizarProd.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmenu_ActualizarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Iconos S-R/update_1.png"))); // NOI18N
         jmenu_ActualizarProd.setText("Actualizar Producto");
         jmenu_ActualizarProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

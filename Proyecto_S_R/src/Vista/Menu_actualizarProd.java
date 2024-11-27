@@ -51,6 +51,7 @@ public class Menu_actualizarProd extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(246, 236, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Actualizar Datos Del Producto"));
 
         jLabel3.setText("Stock");
@@ -69,6 +70,7 @@ public class Menu_actualizarProd extends javax.swing.JFrame {
 
         jcomb_tipoProd_update.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Producto general", "Bebidas", "Vino", "Destilados" }));
 
+        jbutt_ActualizarProd_Update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Iconos S-R/update_1.png"))); // NOI18N
         jbutt_ActualizarProd_Update.setText("Actulizar");
         jbutt_ActualizarProd_Update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,6 +126,7 @@ public class Menu_actualizarProd extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel2.setBackground(new java.awt.Color(246, 236, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar por ID "));
 
         jbutt_buscarID.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Iconos S-R/find.png"))); // NOI18N
