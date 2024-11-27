@@ -59,7 +59,7 @@ public class Menu_venta extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("BOTI donde el pepe");
-        setBackground(new java.awt.Color(252, 245, 230));
+        setBackground(new java.awt.Color(102, 51, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setIconImages(null);
 
@@ -173,7 +173,7 @@ public class Menu_venta extends javax.swing.JFrame {
 
         jmenu_ElimarProd.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmenu_ElimarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Iconos S-R/eliminar (1)_1.png"))); // NOI18N
-        jmenu_ElimarProd.setText("Elimnar Producto");
+        jmenu_ElimarProd.setText("Eliminar Producto");
         jmenu_ElimarProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmenu_ElimarProdActionPerformed(evt);

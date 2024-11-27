@@ -69,9 +69,14 @@ public class Menu_actualizarProd extends javax.swing.JFrame {
         });
 
         jcomb_tipoProd_update.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Producto general", "Bebidas", "Vino", "Destilados" }));
+        jcomb_tipoProd_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcomb_tipoProd_updateActionPerformed(evt);
+            }
+        });
 
         jbutt_ActualizarProd_Update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Iconos S-R/update_1.png"))); // NOI18N
-        jbutt_ActualizarProd_Update.setText("Actulizar");
+        jbutt_ActualizarProd_Update.setText("Actualizar");
         jbutt_ActualizarProd_Update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbutt_ActualizarProd_UpdateActionPerformed(evt);
@@ -160,7 +165,7 @@ public class Menu_actualizarProd extends javax.swing.JFrame {
                     .addComponent(jbutt_buscarID)
                     .addComponent(jLabel2)
                     .addComponent(jtext_IdProd_Update, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -179,8 +184,8 @@ public class Menu_actualizarProd extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12))
         );
 
@@ -233,6 +238,10 @@ public class Menu_actualizarProd extends javax.swing.JFrame {
 
           
     }//GEN-LAST:event_jbutt_buscarIDActionPerformed
+
+    private void jcomb_tipoProd_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomb_tipoProd_updateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcomb_tipoProd_updateActionPerformed
 
     /**
      * @param args the command line arguments
