@@ -43,6 +43,7 @@ public class Menu_Eliminar extends javax.swing.JFrame {
 
         jLabel1.setText("ID Producto");
 
+        jbutt_Eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Iconos S-R/eliminar (1)_1.png"))); // NOI18N
         jbutt_Eliminar.setText("Eliminar");
         jbutt_Eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,7 +62,7 @@ public class Menu_Eliminar extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jtext_id_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)

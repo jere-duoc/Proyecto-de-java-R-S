@@ -62,6 +62,7 @@ public class Ingresar_producto extends javax.swing.JFrame {
 
         jLabel6.setText("Tipo De Producto");
 
+        jbutt_ingresarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Iconos S-R/ingresar.png"))); // NOI18N
         jbutt_ingresarProd.setText("Ingresar Producto");
         jbutt_ingresarProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

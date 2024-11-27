@@ -100,6 +100,7 @@ public class Menu_venta extends javax.swing.JFrame {
             }
         });
 
+        jbutt_agregarID.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Iconos S-R/ingresar.png"))); // NOI18N
         jbutt_agregarID.setText("Agregar");
         jbutt_agregarID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,7 +214,7 @@ public class Menu_venta extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
