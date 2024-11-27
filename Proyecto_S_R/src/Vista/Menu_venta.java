@@ -170,6 +170,7 @@ public class Menu_venta extends javax.swing.JFrame {
         jMenu1.add(jmenu_ActualizarProd);
 
         jmenu_ElimarProd.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmenu_ElimarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Iconos S-R/eliminar (1)_1.png"))); // NOI18N
         jmenu_ElimarProd.setText("Elimnar Producto");
         jmenu_ElimarProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,7 +204,7 @@ public class Menu_venta extends javax.swing.JFrame {
                     .addComponent(jScrollPane1))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
+                        .addGap(97, 97, 97)
                         .addComponent(jButton2)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
